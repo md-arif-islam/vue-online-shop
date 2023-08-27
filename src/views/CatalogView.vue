@@ -31,17 +31,17 @@
 
 <script setup>
 import { onMounted } from "vue";
-import { useProductsStore } from "@/stores/products";
+import { useProductsStore } from "../stores/products";
 import { useRouter } from "vue-router";
 
 const store = useProductsStore();
 const router = useRouter();
 
-const goToProductPage = (productId) => {
+const goToProductPage = (id) => {
   router.push({
     name: "ProductView",
     params: {
-      id: productId,
+      id,
     },
   });
 };
