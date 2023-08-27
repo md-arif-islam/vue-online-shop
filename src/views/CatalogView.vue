@@ -1,15 +1,30 @@
 <template>
-  <div class="products-list">
-    <div
-      class="product"
-      v-for="product in store.products"
-      :key="product.id"
-      @click="goToProductPage(product.id)"
-    >
-      <img :src="product.thumbnail" alt="" />
-      <h2>Brand: {{ product.brand }}</h2>
-      <p>Description: {{ product.description }}</p>
-      <p>Price: ${{ product.price }}</p>
+  <div
+    class="bg-gradient-to-r from-gray-100 to-gray-200 min-h-screen p-4 text-gray-800 flex justify-center"
+  >
+    <div class="max-w-5xl w-full">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div
+          class="bg-white p-4 rounded-xl shadow-md cursor-pointer transition-shadow hover:shadow-lg"
+          v-for="product in store.products"
+          :key="product.id"
+          @click="goToProductPage(product.id)"
+        >
+          <div
+            class="w-48 h-48 mx-auto mb-4 bg-center bg-cover rounded-xl"
+            :style="{ backgroundImage: `url(${product.thumbnail})` }"
+          ></div>
+          <h2 class="text-xl font-semibold mb-2 text-center text-gray-700">
+            {{ product.brand }}
+          </h2>
+          <p class="text-sm mb-2 text-center text-gray-600">
+            Description: {{ product.description }}
+          </p>
+          <p class="text-lg font-bold text-center text-gray-800">
+            Price: ${{ product.price }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,22 +51,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-.products-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.product {
-  flex-basis: 28%;
-  margin: 8px;
-  padding: 16px;
-  box-shadow: 0px 0px 14px 1px #e6e6e6;
-  cursor: pointer;
-}
-
-.product img {
-  width: 70%;
-}
-</style>
+<style scoped></style>
